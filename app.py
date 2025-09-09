@@ -26,7 +26,7 @@ DEBUG_MODE = os.getenv("DEBUG_MODE", "False").lower() == "true"
 def home():
     return """
     <h1>🚀 Сервер ИИ-девушки Ани работает!</h1>
-    <p>Перейдите на <a href="/index.html">страницу чата</a>.</p>
+    <p>Перейдите на <a href="https://aidevushka.ru/">страницу чата</a>.</p>
     <p>API доступно по адресу: <code>/api/chat</code></p>
     """
 
@@ -113,4 +113,5 @@ if __name__ == "__main__":
         debug=DEBUG_MODE,
         threaded=True
     )
+
 
