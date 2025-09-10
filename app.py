@@ -8,14 +8,9 @@ import os
 app = Flask(__name__, static_folder="files", static_url_path="/files")
 
 # Настраиваем CORS — разрешаем только твой домен
-CORS(app, resources={
-    r"/api/*": {
-        "origins": [
-            "https://aidevushka.ru",
-            "https://www.aidevushka.ru"
-        ]
-    }
-})
+CORS(app, resources={r"/*": {
+    "origins": ["https://aidevushka.ru", "https://www.aidevushka.ru"]
+}})
 
 DEBUG_MODE = os.getenv("DEBUG_MODE", "False").lower() == "true"
 
@@ -113,5 +108,6 @@ if __name__ == "__main__":
         debug=DEBUG_MODE,
         threaded=True
     )
+
 
 
