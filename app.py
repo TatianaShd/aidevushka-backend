@@ -63,6 +63,7 @@ def chat_api():
         }), 500
 
 
+# --- Оставляем /api/health как «расширенный» ---
 @app.route('/api/health', methods=['GET'])
 def health_check():
     try:
@@ -99,6 +100,16 @@ def reset_chat():
         return jsonify({"status": "error", "error": str(e)}), 500
 
 
+# --- Новый лёгкий эндпоинт для UptimeRobot ---
+@app.route('/api/ping', methods=['GET', 'HEAD'])
+def ping():
+    """
+    Лёгкий health-check без обращения к внешним сервисам.
+    Используйте его в UptimeRobot, чтобы Render не засыпал.
+    """
+    return jsonify({"status": "ok"}), 200
+
+
 # === Запуск ===
 if __name__ == "__main__":
     print("🔄 Запуск локального сервера...")
@@ -108,6 +119,3 @@ if __name__ == "__main__":
         debug=DEBUG_MODE,
         threaded=True
     )
-
-
-
